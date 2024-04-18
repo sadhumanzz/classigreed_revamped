@@ -19,6 +19,13 @@ namespace StatusBarKind {
     export const Curse = StatusBarKind.create()
 }
 
+//PLANS: GRENADE LAUNCHER, HOMING ROCKET
+
+//pistolAmmo = 6,
+//shotgunAmmo = 2,
+//lmgAmmo = 30,
+//sniperAmmo = 3
+
 let playerIs_Sliding: boolean = false
 let smoothCamera_Active: boolean = false
 let scrapmetalArray: Image[] = []
@@ -260,13 +267,6 @@ game.onUpdate(function () {
             groundedRemember = 0
             playerController.vy = jumpVelocity
         }
-
-        if ((jumpPressedRemember > 0) && (groundedRemember > 0)) {
-            jumpPressedRemember = 0
-            groundedRemember = 0
-            playerController.vy = jumpVelocity
-        }
-
     }
 })
 
@@ -542,20 +542,20 @@ function initEffect (effectType: number, x: number, y: number) {
     if (effectType == 0) {
         effectArray = [
         img`
-            . . . 
-            . d . 
-            . . . 
-            `,
+            . . .
+            . d .
+            . . .
+        `,
         img`
-            . . . 
-            . e . 
-            . . . 
-            `,
+            . . .
+            . e .
+            . . .
+        `,
         img`
-            . . . 
-            . 1 . 
-            . . . 
-            `,
+            . . .
+            . 1 .
+            . . .
+        `,
         img`
             . . . 
             . c . 
@@ -570,14 +570,14 @@ function initEffect (effectType: number, x: number, y: number) {
         }
     } else if (effectType == 1) {
         effectSprite = sprites.create(img`
-            . . . . . . . 
-            . . . . . . . 
-            . . . . . . . 
-            . . . c . . . 
-            . . . . . . . 
-            . . . . . . . 
-            . . . . . . . 
-            `, SpriteKind.effect)
+            . . . . . . .
+            . . . . . . .
+            . . . . . . .
+            . . . c . . .
+            . . . . . . .
+            . . . . . . .
+            . . . . . . .
+        `, SpriteKind.effect)
         effectSprite.setPosition(x, y)
         animation.runImageAnimation(
         effectSprite,
@@ -1334,6 +1334,8 @@ function playerShoot () {
                     projectile = sprites.createProjectileFromSprite(assets.image`railSpikeR`, playerController, 300, 0)
                 }
             }
+        } else {
+            reloadGun()
         }
     }
 }
@@ -2100,7 +2102,7 @@ function initAmmo () {
 
 function attemptSlam () {
     if (!(playerController.isHittingTile(CollisionDirection.Bottom))) {
-        playerController.vy = 25 * 1.5 * PPU
+        playerController.vy = 50 * PPU
         playerSlamDetect = true
     }
 }
