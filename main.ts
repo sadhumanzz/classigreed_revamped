@@ -203,7 +203,7 @@ game.onUpdate(function () {
                 false
             )
             timer.throttle("action", 100, function () {
-                initEffect(0, 0, 0)
+                initEffect(2, playerController.x, playerController.bottom)
             })
         } else if (playerIs_Sliding && characterAnimations.matchesRule(playerController, characterAnimations.rule(Predicate.FacingLeft))) {
             animation.runImageAnimation(
@@ -238,7 +238,7 @@ game.onUpdate(function () {
                 false
             )
             timer.throttle("action", 100, function () {
-                initEffect(0, 0, 0)
+                initEffect(2, playerController.x, playerController.bottom)
             })
         }
 
@@ -449,7 +449,8 @@ function initGunTypes () {
         1,
         2,
         3,
-        4
+        4,
+        5
         ]
     }
     upcomingGun = gunTypeArray._pickRandom()
@@ -488,9 +489,7 @@ sprites.onCreated(SpriteKind.Projectile, function (sprite) {
 })
 
 sprites.onDestroyed(SpriteKind.GroundEnemy, function (sprite) {
-    let bloodEffect = extraEffects.createSingleColorSpreadEffectData(14, ExtraEffectPresetShape.Spark)
-    bloodEffect.gravity = 250
-    extraEffects.createSpreadEffectAt(bloodEffect, sprite.x, sprite.y, 80, 60, 30)
+    initEffect(3, sprite.x, sprite.y)
 
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
@@ -685,6 +684,25 @@ function initEffect (effectType: number, x: number, y: number) {
                 sprites.destroy(effectSprite)
             }
         })
+    } else if (effectType == 2) {
+        let myEffect = extraEffects.createCustomSpreadEffectData(
+            extraEffects.createPresetColorTable(ExtraEffectPresetColor.Ice),
+            false,
+            extraEffects.createPresetSizeTable(ExtraEffectPresetShape.Twinkle),
+            extraEffects.createPercentageRange(0, 0),
+            extraEffects.createPercentageRange(50, 100),
+            extraEffects.createTimeRange(750, 1000),
+            0,
+            -150,
+            extraEffects.createPercentageRange(50, 100),
+            50,
+            0
+        )
+        extraEffects.createSpreadEffectAt(myEffect, x, y, 100, 20, 20)
+    } else if (effectType == 3) {
+        let bloodEffect = extraEffects.createSingleColorSpreadEffectData(14, ExtraEffectPresetShape.Spark)
+        bloodEffect.gravity = 250
+        extraEffects.createSpreadEffectAt(bloodEffect, x,y, 80, 60, 30)
     }
 }
 
@@ -779,6 +797,8 @@ function reloadGun () {
         currentAmmo = 30
     } else if (currentGun == 4) {
         currentAmmo = 3
+    } else if (currentGun == 5) {
+        currentAmmo = 6
     }
 }
 
@@ -839,6 +859,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             playerShoot()
         })
     } else if (currentGun == 4) {
+        playerShoot()
+    } else if (currentGun == 5) {
         playerShoot()
     }
 })
@@ -1337,6 +1359,15 @@ function playerShoot () {
                 } else if (characterAnimations.matchesRule(playerController, characterAnimations.rule(Predicate.FacingRight))) {
                     projectile = sprites.createProjectileFromSprite(assets.image`railSpikeR`, playerController, 300, 0)
                 }
+            } else if (currentGun == 5) {
+                currentAmmo += -1
+                if (characterAnimations.matchesRule(playerController, characterAnimations.rule(Predicate.FacingLeft))) {
+                    projectile = sprites.createProjectileFromSprite(assets.image`grenadeimage`, playerController, -250, 0)
+                } else if (characterAnimations.matchesRule(playerController, characterAnimations.rule(Predicate.FacingRight))) {
+                    projectile = sprites.createProjectileFromSprite(assets.image`grenadeimage`, playerController, 250, 0)
+                }
+                projectile.ay = Gravity * 3
+                
             }
         } else {
             reloadGun()
@@ -1609,6 +1640,11 @@ controller.A.onEvent(ControllerButtonEvent.Repeated, function () {
         timer.throttle("action", 500, function () {
             playerShoot()
         })
+    } else if (currentGun == 5) {
+        timer.throttle("action", 600, function () {
+            playerShoot()
+        }
+        )
     }
 })
 
@@ -2100,6 +2136,8 @@ function initAmmo () {
         currentAmmo = 30
     } else if (currentGun == 4) {
         currentAmmo = 3
+    } else if (currentGun == 5) {
+        currentAmmo = 6
     }
     initAmmoCounter()
 }
@@ -2565,9 +2603,7 @@ sprites.onOverlap(SpriteKind.GroundEnemy, SpriteKind.Player, function (sprite, o
 })
 
 sprites.onDestroyed(SpriteKind.projectileGroundEnemy, function (sprite) {
-    let bloodEffect = extraEffects.createSingleColorSpreadEffectData(14, ExtraEffectPresetShape.Spark)
-    bloodEffect.gravity = 250
-    extraEffects.createSpreadEffectAt(bloodEffect, sprite.x, sprite.y, 80, 60, 30)
+    initEffect(3, sprite.x, sprite.y)
 
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
