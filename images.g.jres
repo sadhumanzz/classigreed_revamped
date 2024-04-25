@@ -84,8 +84,18 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "temple"
     },
+    "image14": {
+        "data": "hwQQABAAAAAAAICHAAAAAAAAcHgAAAAAAACAhwAAAAAAAACACAAAAIAAAID4AAAAgACI+IgKAACAgP/WjYh4CoCA/93d6K0AgABo3Y8IAACAiGjdiHiWCXCAaN3dCACgcAD4iIiPAABwAPj4CPgIAHAAgIAAgAgAcAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "flyingEnemy"
+    },
+    "image20": {
+        "data": "hwQQABAAAACAiIiIiIiICFhmdVZndWaHWGVmZmZmdodYhYiIiIhYiFiGZniHZniHaIZWhVhleIdYhVhVVYVYiFiGh1VVeHiHaIaHVVV4eIdYhVhVVYVYiFiGVoVYZXiHaIZmeIdmeIdYhYiIiIhYiFhmZmZmZnaHaGZ1Vmd1ZoeAiIiIiIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "crate"
+    },
     "image19": {
-        "data": "hwQIAAgAAAAAd3cHAGB3BgAAdgAAAHYAAAB2AAAAdgAAAHYAAABwAA==",
+        "data": "hwQKAAoAAAAAEBERAAAAAABxd3cBAAAAABB2ZwEAAAAAAGEXAAAAAAAAYRcAAAAAAABhFwAAAAAAAGEXAAAAAAAAYRcAAAAAAAAQFwAAAAAAAAABAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "railSpikeR"
     },

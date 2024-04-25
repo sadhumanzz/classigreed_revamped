@@ -488,46 +488,50 @@ sprites.onCreated(SpriteKind.Projectile, function (sprite) {
 })
 
 sprites.onDestroyed(SpriteKind.GroundEnemy, function (sprite) {
+    let bloodEffect = extraEffects.createSingleColorSpreadEffectData(14, ExtraEffectPresetShape.Spark)
+    bloodEffect.gravity = 250
+    extraEffects.createSpreadEffectAt(bloodEffect, sprite.x, sprite.y, 80, 60, 30)
+
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.metalScrap)
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+        `, SpriteKind.metalScrap)
         scrapMetal.setPosition(sprite.x, sprite.y)
     }
     for (let index = 0; index < randint(1, 3); index++) {
         gibs2 = sprites.create(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `, SpriteKind.gibs)
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+            . . . . . . . . . . . . . . . .
+        `, SpriteKind.gibs)
         gibs2.setPosition(sprite.x, sprite.y)
     }
     scene.cameraShake(2, 100)
@@ -597,20 +601,20 @@ function initEffect (effectType: number, x: number, y: number) {
             . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . 
             `,img`
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . 2 2 2 2 . . . . . 
-            . . . . . 2 . . 2 . . . . . 
-            . . . . . 2 . . 2 . . . . . 
-            . . . . . 2 2 2 2 . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . 
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . 2 2 2 2 . . . . .
+                . . . . . 2 . . 2 . . . . .
+                . . . . . 2 . . 2 . . . . .
+                . . . . . 2 2 2 2 . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
+                . . . . . . . . . . . . . .
             `,img`
             . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . 
@@ -2561,6 +2565,10 @@ sprites.onOverlap(SpriteKind.GroundEnemy, SpriteKind.Player, function (sprite, o
 })
 
 sprites.onDestroyed(SpriteKind.projectileGroundEnemy, function (sprite) {
+    let bloodEffect = extraEffects.createSingleColorSpreadEffectData(14, ExtraEffectPresetShape.Spark)
+    bloodEffect.gravity = 250
+    extraEffects.createSpreadEffectAt(bloodEffect, sprite.x, sprite.y, 80, 60, 30)
+
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
             . . . . . . . . . . . . . . . . 
@@ -2603,7 +2611,6 @@ sprites.onDestroyed(SpriteKind.projectileGroundEnemy, function (sprite) {
             `, SpriteKind.gibs)
         gibs2.setPosition(sprite.x, sprite.y)
     }
-    scene.cameraShake(2, 100)
     if (sprite.isHittingTile(CollisionDirection.Bottom)) {
         tileUtil.coverTile(sprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile23`)
     }
