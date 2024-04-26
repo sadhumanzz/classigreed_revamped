@@ -727,6 +727,8 @@ function checkGunDamage () {
         return -0.5
     } else if (currentGun == 4) {
         return -0.5
+    } else if (currentGun == 5) {
+        return -1.5
     }
     return 0
 }
@@ -1366,7 +1368,7 @@ function playerShoot () {
                 } else if (characterAnimations.matchesRule(playerController, characterAnimations.rule(Predicate.FacingRight))) {
                     projectile = sprites.createProjectileFromSprite(assets.image`grenadeimage`, playerController, 250, 0)
                 }
-                projectile.ay = Gravity * 3
+                projectile.ay = Gravity * 2.5
                 
             }
         } else {
@@ -1407,6 +1409,10 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
         scene.cameraShake(2, 100)
         tiles.setTileAt(location, assets.tile`transparency16`)
         tiles.setWallAt(location, false)
+    }
+    if (currentGun == 5) {
+        extraEffects.createSpreadEffectAt(extraEffects.createFullPresetsSpreadEffectData(ExtraEffectPresetColor.Smoke, ExtraEffectPresetShape.Spark), sprite.x, sprite.y, 80, 64)
+
     }
 })
 
