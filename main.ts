@@ -14,6 +14,7 @@ namespace SpriteKind {
     export const Camera = SpriteKind.create()
     export const Decor = SpriteKind.create()
     export const ChargeBar = SpriteKind.create()
+    export const hitBox = SpriteKind.create()
 }
 namespace StatusBarKind {
     export const Curse = StatusBarKind.create()
@@ -800,7 +801,7 @@ function reloadGun () {
     } else if (currentGun == 4) {
         currentAmmo = 3
     } else if (currentGun == 5) {
-        currentAmmo = 6
+        currentAmmo = 4
     }
 }
 
@@ -1368,7 +1369,9 @@ function playerShoot () {
                 } else if (characterAnimations.matchesRule(playerController, characterAnimations.rule(Predicate.FacingRight))) {
                     projectile = sprites.createProjectileFromSprite(assets.image`grenadeimage`, playerController, 250, 0)
                 }
-                projectile.ay = Gravity * 2.5
+                projectile.ay = Gravity * 2.8
+
+
                 
             }
         } else {
@@ -1376,6 +1379,16 @@ function playerShoot () {
         }
     }
 }
+
+game.onUpdate(function() {
+    
+    for (let value of sprites.allOfKind(SpriteKind.hitBox)) {
+        if (currentGun == 5) {
+            value.setPosition(projectile.x, projectile.y)
+
+        }
+    }
+})
 
 function calcDistance (startSprite: Sprite, endSprite: Sprite) {
     disX = startSprite.x - endSprite.x
@@ -1412,7 +1425,6 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     }
     if (currentGun == 5) {
         extraEffects.createSpreadEffectAt(extraEffects.createFullPresetsSpreadEffectData(ExtraEffectPresetColor.Smoke, ExtraEffectPresetShape.Spark), sprite.x, sprite.y, 80, 64)
-
     }
 })
 
@@ -1512,6 +1524,8 @@ sprites.onCreated(SpriteKind.gibs, function (sprite) {
 
 function announceWave (Wave_Count: number) {
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
+
     waveAnnouncement = textsprite.create("WAVE" + convertToText(Wave_Count), 2, 1)
     waveAnnouncement.setFlag(SpriteFlag.RelativeToCamera, true)
     waveAnnouncement.setMaxFontHeight(16)
@@ -1725,15 +1739,15 @@ function initFont () {
     // https://img.freepik.com/premium-vector/game-font-pixel-art-8bit-style-letters-numbers-vector-alphabet-pixel-white-background_360488-381.jpg?w=2000
     fontArray = [
     img`
-        . . 8 8 8 8 . . 
-        . 8 1 1 1 1 8 . 
-        8 1 1 8 8 1 1 8 
-        8 2 2 2 2 2 2 8 
-        8 2 2 8 8 2 2 8 
-        8 3 3 8 8 3 3 8 
-        8 8 8 8 8 8 8 8 
-        8 8 8 . . 8 8 8 
-        `,
+        . . 8 8 8 8 . .
+        . 8 1 1 1 1 8 .
+        8 1 1 8 8 1 1 8
+        8 2 2 2 2 2 2 8
+        8 2 2 8 8 2 2 8
+        8 3 3 8 8 3 3 8
+        8 8 8 8 8 8 8 8
+        8 8 8 . . 8 8 8
+    `,
     img`
         . 8 8 8 8 8 8 . 
         8 1 1 1 1 1 1 8 
@@ -2143,7 +2157,7 @@ function initAmmo () {
     } else if (currentGun == 4) {
         currentAmmo = 3
     } else if (currentGun == 5) {
-        currentAmmo = 6
+        currentAmmo = 4
     }
     initAmmoCounter()
 }
@@ -2695,7 +2709,36 @@ sprites.onDestroyed(SpriteKind.Projectile, function (sprite) {
                 sprites.destroy(value)
             }
         }
+    } else if (currentGun == 5) {
+        sprites.onOverlap(SpriteKind.hitBox, SpriteKind.GroundEnemy, function(sprite: Sprite, otherSprite: Sprite) {
+            timer.throttle("knockback", 150, function () {
+                sprite.vx += otherSprite.vx / 5
+                sprite.vy += -3 * PPU
+            })
+            
+            sprites.destroyAllSpritesOfKind(SpriteKind.hitBox)
+        })
+        let projectileHitBox = sprites.create(assets.image`grenadeHitBox`, SpriteKind.hitBox)
+        projectileHitBox.setFlag(SpriteFlag.AutoDestroy, true)
+        projectileHitBox.setFlag(SpriteFlag.Invisible, true)
+
+
+        
+        sprites.onOverlap(SpriteKind.projectileGroundEnemy, SpriteKind.hitBox, function (sprite: Sprite, otherSprite: Sprite) {
+            timer.throttle("knockback", 150, function () {
+                sprite.vy += -16 * PPU
+                timer.after(150, function() {
+                    sprites.destroyAllSpritesOfKind(SpriteKind.hitBox)
+                    
+                    sprites.changeDataNumberBy(sprite, "HP", -0.8)
+                })
+            })
+        })
     }
+
+    timer.after(150, function () {
+        sprites.destroyAllSpritesOfKind(SpriteKind.hitBox)
+    })
 })
 
 function enemyShoot (dir: number, x: number, y: number) {
