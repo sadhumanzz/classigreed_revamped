@@ -26,6 +26,7 @@ namespace StatusBarKind {
 //shotgunAmmo = 2,
 //lmgAmmo = 30,
 //sniperAmmo = 3
+//grenadeAmmo = 4
 
 let playerIs_Sliding: boolean = false
 let smoothCamera_Active: boolean = false
