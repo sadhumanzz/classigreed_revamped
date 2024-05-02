@@ -86,7 +86,8 @@ let groundedRememberTime: number = 5
 let jumping: boolean = false
 let falling: boolean = false
 
-initLevel(0)
+let mainMenu = miniMenu.createMenu(null)
+initLevel(-1)
 
 game.onUpdate(function () {
     if (!(controller.down.isPressed())) {
@@ -1015,10 +1016,10 @@ function initBars () {
     playerHealthBar.value = playerCurrentHP
     playerHealthBar.max = playerMaxHP
     playerHealthBar.attachToSprite(playerController, 0, 0)
-    playerCurseBar.setColor(1, 0, 1)
+    playerCurseBar.setColor(1, 8, 1)
     playerCurseBar.value = 0
     playerCurseBar.max = playerMaxHP
-    playerCurseBar.attachToSprite(playerController, 0, 0)
+    playerCurseBar.attachToSprite(playerController, 8, 0)
 }
 
 spriteutils.onSpriteKindUpdateInterval(SpriteKind.projectileGroundEnemy, 500, function (sprite) {
@@ -2163,9 +2164,11 @@ function initAmmo () {
 }
 
 function attemptSlam () {
-    if (!(playerController.isHittingTile(CollisionDirection.Bottom))) {
-        playerController.vy = 50 * PPU
-        playerSlamDetect = true
+    if (playerCanMove) {
+        if (!(playerController.isHittingTile(CollisionDirection.Bottom))) {
+            playerController.vy = 50 * PPU
+            playerSlamDetect = true
+        }
     }
 }
 
@@ -2888,10 +2891,83 @@ sprites.onCreated(SpriteKind.metalScrap, function (sprite) {
 //    }
 //
 //}
+function openMainMenu() {
+    mainMenu = miniMenu.createMenu(
+        miniMenu.createMenuItem("Play!"),
+        miniMenu.createMenuItem("How-To"),
+        miniMenu.createMenuItem("Multi")
+    )
+    mainMenu.setMenuStyleProperty(miniMenu.MenuStyleProperty.Width, 70)
+    mainMenu.setMenuStyleProperty(miniMenu.MenuStyleProperty.Height, 100)
+    mainMenu.setStyleProperty(miniMenu.StyleKind.DefaultAndSelected, miniMenu.StyleProperty.Border, miniMenu.createBorderBox(
+        4,
+        0,
+        0,
+        0
+    ))
+    mainMenu.setStyleProperty(miniMenu.StyleKind.DefaultAndSelected, miniMenu.StyleProperty.Margin, miniMenu.createBorderBox(
+        0,
+        0,
+        0,
+        2
+    ))
+    mainMenu.setStyleProperty(miniMenu.StyleKind.Default, miniMenu.StyleProperty.BorderColor, 1)
+    mainMenu.setStyleProperty(miniMenu.StyleKind.Selected, miniMenu.StyleProperty.BorderColor, 12)
+    mainMenu.setStyleProperty(miniMenu.StyleKind.DefaultAndSelected, miniMenu.StyleProperty.Background, 10)
+    mainMenu.setStyleProperty(miniMenu.StyleKind.Default, miniMenu.StyleProperty.Foreground, 1)
+    mainMenu.setStyleProperty(miniMenu.StyleKind.Selected, miniMenu.StyleProperty.Foreground, 12)
+    mainMenu.top = 10
+    mainMenu.right = 75
+    mainMenu.setTitle("CLASSIGREED")
+    mainMenu.setStyleProperty(miniMenu.StyleKind.Title, miniMenu.StyleProperty.Border, miniMenu.createBorderBox(
+        0,
+        0,
+        0,
+        2
+    ))
+    mainMenu.setStyleProperty(miniMenu.StyleKind.Title, miniMenu.StyleProperty.Background, 10)
+}
+
+mainMenu.onButtonPressed(controller.A, function(selection: string, selectedIndex: number) {
+    playerController.vy = -(6 * PPU)
+    playerController.ay = Gravity
+    playerController.vx = (100 - playerSlideFriction) / 100 * playerController.vx
+    playerController.ax += (playerAcceleration * 1.3 * Delta.DELTA())
+    timer.after(500, function () {
+        color.FadeToBlack.startScreenEffect(1500)
+    })
+    if (selectedIndex = 2) {
+        timer.after(2000, function() {
+            initLevel(9)
+            mainMenu.close()
+            color.startFade(color.Black, color.originalPalette)
+        })
+
+    } else if (selectedIndex = 1) {
+        timer.after(2000, function () {
+            initLevel(0)
+            mainMenu.close()
+            color.startFade(color.Black, color.originalPalette, 1000)
+
+        })
+    }
+})
+
 function initLevel (LevelNum: number) {
-    if (LevelNum == 0) {
+    if (LevelNum == -1) {
+        currentLevel = -1
+        scene.setBackgroundColor(10)
+        tiles.setCurrentTilemap(tilemap`mainMenu`)
+        initPlayer()
+        playerCanMove = false
+        openMainMenu()
+    } else if (LevelNum == 0) {
         currentLevel = 0
-        timer.after(500, function () {
+        tiles.setCurrentTilemap(tilemap`level-1`)
+
+        scene.setBackgroundColor(8)
+        mainMenu.close()
+        timer.after(1000, function () {
             game.splash("[INITIALIZING SIMULATION...]")
             game.splash("PRESS SPACE OR", "THE A BUTTON TO BEGIN")
             timer.after(500, function () {
@@ -3029,6 +3105,7 @@ function initLevel (LevelNum: number) {
         initLevel(9)
     } else if (LevelNum == 9) {
         currentLevel = 9
+        mainMenu.close()
         scene.setBackgroundImage(img`
             1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
             1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
