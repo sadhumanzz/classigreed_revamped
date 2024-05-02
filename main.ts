@@ -133,10 +133,9 @@ game.onUpdate(function () {
             tiles.setWallAt(value, false)
         }
     }
-
     if (playerCanMove) {
-        if (controller.left.isPressed() || controller.right.isPressed()) {
-            playerController.vx += (playerAcceleration * Math.sign(controller.dx())) * Delta.DELTA()
+        if (mp.isButtonPressed(mp.playerSelector(mp.PlayerNumber.One), mp.MultiplayerButton.Left) || (mp.isButtonPressed(mp.playerSelector(mp.PlayerNumber.One), mp.MultiplayerButton.Right))) {
+            playerController.vx += (playerAcceleration * Math.sign(controller.player1.dx())) * Delta.DELTA()
         }
         if (!(playerIs_Sliding)) {
             playerController.vx = (100 - Friction) / 100 * playerController.vx
@@ -985,6 +984,8 @@ function initPlayer () {
         ....8a7887a8......
         ....878.878.......
         `, SpriteKind.Player)
+        
+        mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), playerController)
     initPlayerAnimation()
     tiles.placeOnRandomTile(playerController, assets.tile`myTile26`)
     tileUtil.replaceAllTiles(assets.tile`myTile26`, assets.tile`transparency16`)
