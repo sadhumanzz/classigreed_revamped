@@ -68,6 +68,8 @@ let currentLevel: number = 0
 let spawnableFloorTileArray: tiles.Location[] = []
 let enemyController: Sprite = null
 let waveCount: number = 0
+let killCount: number = 0
+let killCountSprite: Sprite = null
 let PPU: number = 16
 let Friction: number = 1.06 * PPU
 let playerAirFriction: number = 1 * PPU
@@ -469,26 +471,7 @@ function initGunTypes () {
     }
     upcomingGun = gunTypeArray._pickRandom()
     currentGun = upcomingGun
-    currentGunSprite = img`
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        ........88.....8..
-        .......8aa8888888.
-        ......8aaa9877778.
-        .......8a98666888.
-        ........887888....
-        .........8778.....
-        .........8888.....
-        ..................
-        ..................
-        ..................
-        ..................
-        ..................
-        `
+    currentGunSprite =assets.image`gunSprite`
 }
 
 sprites.onCreated(SpriteKind.Projectile, function (sprite) {
@@ -553,31 +536,17 @@ sprites.onDestroyed(SpriteKind.GroundEnemy, function (sprite) {
             tileUtil.coverTile(sprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile23`)
         }
     }
+
+    killCount += 1
 })
 
 function initEffect (effectType: number, x: number, y: number) {
     if (effectType == 0) {
         effectArray = [
-        img`
-            . . .
-            . d .
-            . . .
-        `,
-        img`
-            . . .
-            . e .
-            . . .
-        `,
-        img`
-            . . .
-            . 1 .
-            . . .
-        `,
-        img`
-            . . . 
-            . c . 
-            . . . 
-            `
+        assets.image`spark1`,
+        assets.image`spark2`,
+        assets.image`spark3`,
+        assets.image`spark4`
         ]
         for (let index = 0; index < randint(0, 5); index++) {
             effectSprite = sprites.create(effectArray._pickRandom(), SpriteKind.effect)
@@ -1724,375 +1693,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.GroundEnemy, function (sprite, o
     })
 })
 
-function initFont () {
-    // https://img.freepik.com/premium-vector/game-font-pixel-art-8bit-style-letters-numbers-vector-alphabet-pixel-white-background_360488-381.jpg?w=2000
-    fontArray = [
-    img`
-        . . 8 8 8 8 . .
-        . 8 1 1 1 1 8 .
-        8 1 1 8 8 1 1 8
-        8 2 2 2 2 2 2 8
-        8 2 2 8 8 2 2 8
-        8 3 3 8 8 3 3 8
-        8 8 8 8 8 8 8 8
-        8 8 8 . . 8 8 8
-    `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 8 2 2 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . . 8 8 8 8 . . 
-        . 8 1 1 1 1 8 . 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 8 8 . 
-        8 2 2 8 8 2 2 8 
-        8 8 3 3 3 3 8 8 
-        . 8 8 8 8 8 8 . 
-        . . 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 1 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 2 2 2 8 
-        8 3 3 3 3 3 8 8 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `,
-    img`
-        . . 8 8 8 8 8 . 
-        . 8 1 1 1 1 1 8 
-        8 1 1 8 8 8 8 8 
-        8 2 2 2 2 8 8 . 
-        8 2 2 8 8 8 8 . 
-        8 8 3 3 3 3 3 8 
-        . 8 8 8 8 8 8 8 
-        . . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 8 8 8 . 
-        8 2 2 2 8 8 . . 
-        8 2 2 8 8 . . . 
-        8 3 3 8 . . . . 
-        8 8 8 8 . . . . 
-        . 8 8 . . . . . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 8 8 8 . 
-        8 2 2 8 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 3 3 3 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . 8 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 3 3 8 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 . 8 8 . . 
-        `,
-    img`
-        . 8 8 8 8 . . . 
-        8 1 1 1 1 8 . . 
-        8 8 1 1 8 8 . . 
-        . 8 2 2 8 . . . 
-        . 8 2 2 8 . . . 
-        8 3 3 3 3 8 . . 
-        8 8 8 8 8 8 . . 
-        . 8 8 8 8 . . . 
-        `,
-    img`
-        . . . . . 8 8 . 
-        . . . . 8 1 1 8 
-        . . . . 8 1 1 8 
-        . 8 8 . 8 2 2 8 
-        8 2 2 8 8 2 2 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 8 1 1 1 8 
-        8 2 2 2 2 2 8 8 
-        8 2 2 2 2 2 8 . 
-        8 3 3 8 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 . 8 8 8 . 
-        `,
-    img`
-        . 8 8 . . . . . 
-        8 1 1 8 . . . . 
-        8 1 1 8 . . . . 
-        8 2 2 8 . . . . 
-        8 2 2 8 8 8 . . 
-        8 3 3 3 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . . . 8 8 . 
-        8 1 1 8 . 8 1 1 8 
-        8 1 1 1 8 1 1 1 8 
-        8 2 2 2 2 2 2 2 8 
-        8 2 2 8 2 8 2 2 8 
-        8 3 3 8 8 8 3 3 8 
-        8 8 8 8 . 8 8 8 8 
-        . 8 8 . . . 8 8 . 
-        `,
-    img`
-        . 8 . . 8 8 . . 
-        8 1 8 8 1 1 8 . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 3 3 8 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 . 8 8 . . 
-        `,
-    img`
-        . . 8 8 8 . . . 
-        . 8 1 1 1 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 8 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 8 3 3 3 8 8 . 
-        . 8 8 8 8 8 . . 
-        . . 8 8 8 . . . 
-        `,
-    img`
-        . 8 8 8 8 . . . 
-        8 1 1 1 1 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 8 8 8 . 
-        8 3 3 8 8 8 . . 
-        8 8 8 8 . . . . 
-        . 8 8 . . . . . 
-        `,
-    img`
-        . . 8 8 8 . . . 
-        . 8 1 1 1 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 8 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 8 3 3 3 8 8 . 
-        . 8 8 3 8 8 . . 
-        . . 8 8 8 . . . 
-        . . . 8 . . . . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 2 2 2 8 8 
-        8 2 2 8 8 2 2 8 
-        8 3 3 8 8 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 . . 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 8 8 8 . 
-        8 8 2 2 2 2 8 . 
-        8 8 8 8 2 2 8 . 
-        8 3 3 3 3 8 8 . 
-        8 8 8 8 8 8 . . 
-        . 8 8 8 8 . . . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 8 8 1 1 8 8 8 
-        . 8 8 2 2 8 8 . 
-        . . 8 2 2 8 . . 
-        . . 8 3 3 8 . . 
-        . . 8 8 8 8 . . 
-        . . . 8 8 . . . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 8 2 2 8 
-        8 8 3 3 3 3 8 8 
-        . 8 8 8 8 8 8 . 
-        . . 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 2 2 8 8 
-        8 3 3 3 3 8 8 . 
-        8 8 8 8 8 8 . . 
-        . 8 8 8 8 . . . 
-        `,
-    img`
-        . 8 8 . . . 8 8 . 
-        8 1 1 8 . 8 1 1 8 
-        8 1 1 8 8 8 1 1 8 
-        8 2 2 8 2 8 2 2 8 
-        8 2 2 2 2 2 2 2 8 
-        8 3 3 3 8 3 3 3 8 
-        8 8 8 8 8 8 8 8 8 
-        . 8 8 8 . 8 8 8 . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 1 1 1 1 8 
-        8 8 2 2 2 2 8 8 
-        8 2 2 2 2 2 2 8 
-        8 3 3 8 8 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 . . 8 8 . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 1 1 1 1 8 
-        8 8 2 2 2 2 8 8 
-        . 8 8 2 2 8 8 . 
-        . . 8 3 3 8 . . 
-        . . 8 8 8 8 . . 
-        . . . 8 8 . . . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 8 8 8 1 1 8 . 
-        . 8 8 2 2 8 8 . 
-        . 8 2 2 8 8 . . 
-        8 3 3 3 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `
-    ]
-    fontNumArray = [
-    img`
-        . . 8 8 8 8 . . 
-        . 8 1 1 1 1 8 . 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 8 2 2 8 
-        8 8 3 3 3 3 8 8 
-        . 8 8 8 8 8 8 . 
-        . . 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . 
-        8 1 1 8 
-        8 1 1 8 
-        8 2 2 8 
-        8 2 2 8 
-        8 3 3 8 
-        8 8 8 8 
-        . 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 8 8 8 8 1 1 8 
-        8 2 2 2 2 2 2 8 
-        8 2 2 8 8 8 8 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 8 8 8 1 1 8 
-        . 8 8 2 2 8 8 
-        . 8 8 8 2 2 8 
-        8 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 
-        . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 . 8 8 . 
-        8 1 1 8 1 1 8 
-        8 1 1 8 1 1 8 
-        8 2 2 2 2 2 8 
-        8 8 8 8 2 2 8 
-        . . . 8 3 3 8 
-        . . . 8 8 8 8 
-        . . . . 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 1 1 8 8 8 8 8 
-        8 2 2 2 2 2 2 8 
-        8 8 8 8 8 2 2 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 1 1 8 8 8 8 
-        8 2 2 2 2 2 8 
-        8 2 2 8 2 2 8 
-        8 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 
-        . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 8 8 8 1 1 8 
-        . 8 8 2 2 8 8 
-        . 8 2 2 8 8 . 
-        8 3 3 8 8 . . 
-        8 8 8 8 . . . 
-        . 8 8 . . . . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 1 1 8 1 1 8 
-        8 8 2 2 2 8 8 
-        8 2 2 8 2 2 8 
-        8 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 
-        . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 . . 
-        8 1 1 1 1 8 . 
-        8 1 1 8 1 1 8 
-        8 2 2 2 2 2 8 
-        8 8 8 8 2 2 8 
-        . 8 8 8 3 3 8 
-        . . . 8 8 8 8 
-        . . . . 8 8 . 
-        `
-    ]
-}
-
 function initSmoothCamera () {
     smoothCamera = sprites.create(assets.image`CameraSprite`, SpriteKind.Camera)
     smoothCamera.setFlag(SpriteFlag.Invisible, true)
@@ -2661,6 +2261,8 @@ sprites.onDestroyed(SpriteKind.projectileGroundEnemy, function (sprite) {
     if (sprite.isHittingTile(CollisionDirection.Bottom)) {
         tileUtil.coverTile(sprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile23`)
     }
+
+    killCount += 1
 })
 
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -3189,9 +2791,11 @@ game.onUpdateInterval(200, function () {
                 }
             }
         }
+        
+        
     }
 })
-
+//MAYBE START HERE??
 game.onUpdateInterval(500, function () {
 
     if (waveCount > 0) {
