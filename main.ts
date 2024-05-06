@@ -2925,14 +2925,14 @@ timer.throttle("playGame", 2000, function() {
         timer.after(500, function () {
             color.FadeToBlack.startScreenEffect(1500)
         })
-        if (selectedIndex = 2) {
+        if (selectedIndex == 0) {
             timer.after(2000, function() {
                 initLevel(9)
                 mainMenu.close()
-                color.startFade(color.Black, color.originalPalette)
+                color.startFade(color.Black, color.originalPalette, 1000)
             })
 
-        } else if (selectedIndex = 1) {
+        } else if (selectedIndex == 1) {
             timer.after(2000, function () {
                 initLevel(0)
                 mainMenu.close()
