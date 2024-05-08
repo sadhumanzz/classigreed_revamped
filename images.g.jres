@@ -362,12 +362,22 @@
     "image70": {
         "data": "hwQDAAMAAAAAAAAAwAAAAAAAAAA=",
         "mimeType": "image/x-mkcd-f4",
-        "displayName": "spark4"
+        "displayName": "spark0"
     },
     "image74": {
         "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiIGIg4iBghMoiAIYIIAIiIAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "8bit_0"
+    },
+    "image43": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAIYgIACiCAIAhiAgYITKIgIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_M"
+    },
+    "image47": {
+        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiDGCEyiIAhgggAiIgAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_Q"
     },
     "NC": {
         "namespace": "DTOtx0x5#qzJe}Tun",

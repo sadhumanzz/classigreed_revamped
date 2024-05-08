@@ -17,7 +17,8 @@
         "Extra Effects": "github:alexszeto/extra-effects#v3.1.0",
         "arcade-mini-menu": "github:riknoll/arcade-mini-menu#v0.0.1",
         "multiplayer": "*",
-        "arcade-text": "github:microsoft/arcade-text#v1.3.0"
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0",
+        "arcade-fancy-text": "github:riknoll/arcade-fancy-text#v0.1.0"
     },
     "files": [
         "main.ts",

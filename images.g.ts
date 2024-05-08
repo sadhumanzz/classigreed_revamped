@@ -1800,7 +1800,7 @@ eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 . . . . . . . . . . . . . . . . 
 `;
             case "image70":
-            case "spark4":return img`
+            case "spark0":return img`
 . . . 
 . c . 
 . . . 
@@ -1815,6 +1815,28 @@ eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 8 8 3 3 3 3 8 8 
 . 8 8 8 8 8 8 . 
 . . 8 8 8 8 . . 
+`;
+            case "image43":
+            case "8bit_M":return img`
+. 8 8 . . . 8 . 
+8 1 1 8 . 8 1 8 
+8 1 1 1 8 1 1 8 
+8 2 2 2 2 2 2 8 
+8 2 2 8 2 8 2 8 
+8 3 3 8 8 8 3 8 
+8 8 8 8 . 8 8 8 
+. 8 8 . . . 8 . 
+`;
+            case "image47":
+            case "8bit_Q":return img`
+. . 8 8 8 . . . 
+. 8 1 1 1 8 . . 
+8 1 1 8 1 1 8 . 
+8 2 2 8 2 2 8 . 
+8 2 2 8 2 2 8 . 
+8 8 3 3 3 8 8 . 
+. 8 8 3 8 8 . . 
+. . 8 8 8 . . . 
 `;
         }
         return null;
