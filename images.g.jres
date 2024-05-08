@@ -149,6 +149,226 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "BackgroundGrass"
     },
+    "image31": {
+        "data": "hwQIAAgAAAAAiIiIgCEyiBghMogYKIgIGCiICBghMoiAITKIAIiIiA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_A"
+    },
+    "image32": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMogYKDiIGCg4iBghMogYgTKIgAiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_B"
+    },
+    "image33": {
+        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiIGIg4iBiBMoiAgYIIAAiIAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_C"
+    },
+    "image34": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMogYiDiIGIEyiBghMoiAIYIIAIiIAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_D"
+    },
+    "image35": {
+        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYKDiIGCg4iBiIOIgYiDiIgAiACA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_E"
+    },
+    "image36": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMogYKIgIGIgIABiIAACACAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_F"
+    },
+    "image37": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMogYiDiIGCgyiBgoMoiAiIgIAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_G"
+    },
+    "image38": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAKIgIGCEyiBghMoiAiIgIAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_H"
+    },
+    "image39": {
+        "data": "hwQIAAgAAACACIAIGIg4iBghMogYITKIGIg4iIAIgAgAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_I"
+    },
+    "image40": {
+        "data": "hwQIAAgAAAAAAIgIAIAyiACAMogAADiIgIg4iBghMogYITKIgIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_J"
+    },
+    "image41": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAKIIIgCEyiBghMogYgTiIgIiACA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_K"
+    },
+    "image42": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAiDiIAAA4iAAAOIgAAIAIAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_L"
+    },
+    "image44": {
+        "data": "hwQIAAgAAACAiIgIGCEyiIAhMoiAKIgIGCEyiBghMoiAiIgIAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_N"
+    },
+    "image45": {
+        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiIGCEyiIAhgggAiIgAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_O"
+    },
+    "image46": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMogYKIgIGCGIAIAhiAAAiAgAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_P"
+    },
+    "image48": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMogYKIgIGCiICBghMogYgTKIgIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_R"
+    },
+    "image49": {
+        "data": "hwQIAAgAAACAiIgIGIE4iBghOIgYKDiIGCgyiBgoggiAiIgAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_S"
+    },
+    "image50": {
+        "data": "hwQIAAgAAACACAAAGIgAABiIiAgYITKIGCEyiBiIiAgYiAAAgAgAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_T"
+    },
+    "image51": {
+        "data": "hwQIAAgAAACAiIgAGCGCCBghMoiAiDiIgIg4iBghMogYIYIIgIiIAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_U"
+    },
+    "image52": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAiDiIgIgyiBghgggYIYgAgIgIAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_V"
+    },
+    "image53": {
+        "data": "hwQJAAgAAACAiIgIGCEyiBghMoiAiDKIACiCCICIMogYITKIGCEyiICIiAg=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_W"
+    },
+    "image54": {
+        "data": "hwQIAAgAAACAiIgIGIEyiBghMoiAIYIIgCGCCBghMogYgTKIgIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_X"
+    },
+    "image55": {
+        "data": "hwQIAAgAAACAiAAAGIEIABghiAiAITKIgCEyiBghiAgYgQgAgIgAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_Y"
+    },
+    "image56": {
+        "data": "hwQIAAgAAACACIAIGIg4iBiIMogYKDKIGCE4iBiBOIiAiIAIAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_Z"
+    },
+    "image57": {
+        "data": "hwQEAAgAAACAiIgIGCEyiBghMoiAiIgI",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_1"
+    },
+    "image58": {
+        "data": "hwQIAAgAAACAiIgIGCgyiBgoMogYKDiIGCg4iBghOIgYITiIgIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_2"
+    },
+    "image59": {
+        "data": "hwQHAAgAAACACIAIGIg4iBiIOIgYKDiIGCEyiBiBMoiAiIgI",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_3"
+    },
+    "image60": {
+        "data": "hwQHAAgAAACAiAgAGCEIABghCACAKIgIGCEyiBghMoiAiIgI",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_4"
+    },
+    "image61": {
+        "data": "hwQIAAgAAACAiIgIGCE4iBghOIgYKDiIGCg4iBgoMogYKDKIgIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_5"
+    },
+    "image62": {
+        "data": "hwQHAAgAAACAiIgIGCEyiBghMogYKDiIGCgyiBgoMoiAiIgI",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_6"
+    },
+    "image63": {
+        "data": "hwQHAAgAAACACIAIGIg4iBiIMogYKIIIGCGIABiBCACAiAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8Bit_7"
+    },
+    "image64": {
+        "data": "hwQHAAgAAACAiIgIGIEyiBghMogYKDiIGCEyiBiBMoiAiIgI",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_8"
+    },
+    "image65": {
+        "data": "hwQHAAgAAACAiAgAGCGIABghiAAYKIgIGCEyiIAhMogAiIgI",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_9"
+    },
+    "image66": {
+        "data": "hwQSABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAACAigAAAAAAAAAAAACoqggAAAAAAAAAAAComogIAAAAAAAAAACAiXcIAAAAAAAAAACAaHgIAAAAAAAAAACAZ4gIAAAAAAAAAACAZwgAAAAAAAAAAACAhwAAAAAAAAAAAACIhwAAAAAAAAAAAACAiAAAAAAAAAAAAAAAAAAAAAAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "gunSprite"
+    },
+    "image67": {
+        "data": "hwQDAAMAAAAAAAAA0AAAAAAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spark1"
+    },
+    "image68": {
+        "data": "hwQDAAMAAAAAAAAA4AAAAAAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spark2"
+    },
+    "image69": {
+        "data": "hwQDAAMAAAAAAAAAEAAAAAAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spark3"
+    },
+    "image71": {
+        "data": "hwQHAAcAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "projectilePop1"
+    },
+    "image72": {
+        "data": "hwQOAA4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMAAAAAAAAAMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "projectilePop2"
+    },
+    "image73": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spark4"
+    },
+    "image70": {
+        "data": "hwQDAAMAAAAAAAAAwAAAAAAAAAA=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spark0"
+    },
+    "image74": {
+        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiIGIg4iBghMoiAIYIIAIiIAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_0"
+    },
+    "image43": {
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAIYgIACiCAIAhiAgYITKIgIiICA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_M"
+    },
+    "image47": {
+        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiDGCEyiIAhgggAiIgAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_Q"
+    },
     "NC": {
         "namespace": "DTOtx0x5#qzJe}Tun",
         "id": "NC",

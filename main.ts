@@ -36,7 +36,6 @@ let smoothCamera_Active: boolean = false
 let scrapmetalArray: Image[] = []
 let smoothCamera: Sprite = null
 let fontNumArray: Image[] = []
-let fontArray: Image[] = []
 let playerSlamDetect: boolean = false
 let waveAnnouncement: TextSprite = null
 let randGibs: Image[] = []
@@ -91,7 +90,16 @@ let jumping: boolean = false
 let falling: boolean = false
 
 let mainMenu = miniMenu.createMenu(null)
+let killCounter = fancyText.create("", 0, 12, fancyText.rounded_small)
+let killCount: number = 0
+
 initLevel(-1)
+
+// https://img.freepik.com/premium-vector/game-font-pixel-art-8bit-style-letters-numbers-vector-alphabet-pixel-white-background_360488-381.jpg?w=2000
+
+killCounter = fancyText.create(killCount.toString(), 0, 3, fancyText.rounded_small)
+killCounter.setPosition(150, 24)
+killCounter.setFlag(SpriteFlag.RelativeToCamera, true)
 
 game.onUpdate(function () {
     if (!(controller.down.isPressed())) {
@@ -274,6 +282,10 @@ game.onUpdate(function () {
         }
     }
 })
+
+function updateKillCount() {
+    fancyText.setText(killCounter, killCount.toString())
+}
 
 function initEnemy (Type: number) {
     waveCount += 1
@@ -504,6 +516,8 @@ sprites.onCreated(SpriteKind.Projectile, function (sprite) {
 
 sprites.onDestroyed(SpriteKind.GroundEnemy, function (sprite) {
     initEffect(3, sprite.x, sprite.y)
+    killCount += 1
+    updateKillCount()
 
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
@@ -1581,6 +1595,7 @@ spriteutils.createRenderable(100, function (screen2) {
     } else {
         spriteutils.drawTransparentImage(bulletCountArray[currentAmmo], screen2, 2, 2)
     }
+
 })
 
 sprites.onCreated(SpriteKind.projectileGroundEnemy, function (sprite) {
@@ -1724,374 +1739,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.GroundEnemy, function (sprite, o
     })
 })
 
-function initFont () {
-    // https://img.freepik.com/premium-vector/game-font-pixel-art-8bit-style-letters-numbers-vector-alphabet-pixel-white-background_360488-381.jpg?w=2000
-    fontArray = [
-    img`
-        . . 8 8 8 8 . .
-        . 8 1 1 1 1 8 .
-        8 1 1 8 8 1 1 8
-        8 2 2 2 2 2 2 8
-        8 2 2 8 8 2 2 8
-        8 3 3 8 8 3 3 8
-        8 8 8 8 8 8 8 8
-        8 8 8 . . 8 8 8
-    `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 8 2 2 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . . 8 8 8 8 . . 
-        . 8 1 1 1 1 8 . 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 8 8 . 
-        8 2 2 8 8 2 2 8 
-        8 8 3 3 3 3 8 8 
-        . 8 8 8 8 8 8 . 
-        . . 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 1 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 2 2 2 8 
-        8 3 3 3 3 3 8 8 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `,
-    img`
-        . . 8 8 8 8 8 . 
-        . 8 1 1 1 1 1 8 
-        8 1 1 8 8 8 8 8 
-        8 2 2 2 2 8 8 . 
-        8 2 2 8 8 8 8 . 
-        8 8 3 3 3 3 3 8 
-        . 8 8 8 8 8 8 8 
-        . . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 8 8 8 . 
-        8 2 2 2 8 8 . . 
-        8 2 2 8 8 . . . 
-        8 3 3 8 . . . . 
-        8 8 8 8 . . . . 
-        . 8 8 . . . . . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 8 8 8 . 
-        8 2 2 8 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 3 3 3 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . 8 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 3 3 8 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 . 8 8 . . 
-        `,
-    img`
-        . 8 8 8 8 . . . 
-        8 1 1 1 1 8 . . 
-        8 8 1 1 8 8 . . 
-        . 8 2 2 8 . . . 
-        . 8 2 2 8 . . . 
-        8 3 3 3 3 8 . . 
-        8 8 8 8 8 8 . . 
-        . 8 8 8 8 . . . 
-        `,
-    img`
-        . . . . . 8 8 . 
-        . . . . 8 1 1 8 
-        . . . . 8 1 1 8 
-        . 8 8 . 8 2 2 8 
-        8 2 2 8 8 2 2 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 8 1 1 1 8 
-        8 2 2 2 2 2 8 8 
-        8 2 2 2 2 2 8 . 
-        8 3 3 8 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 . 8 8 8 . 
-        `,
-    img`
-        . 8 8 . . . . . 
-        8 1 1 8 . . . . 
-        8 1 1 8 . . . . 
-        8 2 2 8 . . . . 
-        8 2 2 8 8 8 . . 
-        8 3 3 3 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . . . 8 8 . 
-        8 1 1 8 . 8 1 1 8 
-        8 1 1 1 8 1 1 1 8 
-        8 2 2 2 2 2 2 2 8 
-        8 2 2 8 2 8 2 2 8 
-        8 3 3 8 8 8 3 3 8 
-        8 8 8 8 . 8 8 8 8 
-        . 8 8 . . . 8 8 . 
-        `,
-    img`
-        . 8 . . 8 8 . . 
-        8 1 8 8 1 1 8 . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 3 3 8 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 . 8 8 . . 
-        `,
-    img`
-        . . 8 8 8 . . . 
-        . 8 1 1 1 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 8 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 8 3 3 3 8 8 . 
-        . 8 8 8 8 8 . . 
-        . . 8 8 8 . . . 
-        `,
-    img`
-        . 8 8 8 8 . . . 
-        8 1 1 1 1 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 2 2 2 8 . 
-        8 2 2 8 8 8 8 . 
-        8 3 3 8 8 8 . . 
-        8 8 8 8 . . . . 
-        . 8 8 . . . . . 
-        `,
-    img`
-        . . 8 8 8 . . . 
-        . 8 1 1 1 8 . . 
-        8 1 1 8 1 1 8 . 
-        8 2 2 8 2 2 8 . 
-        8 2 2 8 2 2 8 . 
-        8 8 3 3 3 8 8 . 
-        . 8 8 3 8 8 . . 
-        . . 8 8 8 . . . 
-        . . . 8 . . . . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 2 2 2 8 8 
-        8 2 2 8 8 2 2 8 
-        8 3 3 8 8 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 . . 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 1 1 8 8 8 8 . 
-        8 8 2 2 2 2 8 . 
-        8 8 8 8 2 2 8 . 
-        8 3 3 3 3 8 8 . 
-        8 8 8 8 8 8 . . 
-        . 8 8 8 8 . . . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 8 8 1 1 8 8 8 
-        . 8 8 2 2 8 8 . 
-        . . 8 2 2 8 . . 
-        . . 8 3 3 8 . . 
-        . . 8 8 8 8 . . 
-        . . . 8 8 . . . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 8 2 2 8 
-        8 8 3 3 3 3 8 8 
-        . 8 8 8 8 8 8 . 
-        . . 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 2 2 8 8 
-        8 3 3 3 3 8 8 . 
-        8 8 8 8 8 8 . . 
-        . 8 8 8 8 . . . 
-        `,
-    img`
-        . 8 8 . . . 8 8 . 
-        8 1 1 8 . 8 1 1 8 
-        8 1 1 8 8 8 1 1 8 
-        8 2 2 8 2 8 2 2 8 
-        8 2 2 2 2 2 2 2 8 
-        8 3 3 3 8 3 3 3 8 
-        8 8 8 8 8 8 8 8 8 
-        . 8 8 8 . 8 8 8 . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 1 1 1 1 8 
-        8 8 2 2 2 2 8 8 
-        8 2 2 2 2 2 2 8 
-        8 3 3 8 8 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 . . 8 8 . 
-        `,
-    img`
-        . 8 8 . . 8 8 . 
-        8 1 1 8 8 1 1 8 
-        8 1 1 1 1 1 1 8 
-        8 8 2 2 2 2 8 8 
-        . 8 8 2 2 8 8 . 
-        . . 8 3 3 8 . . 
-        . . 8 8 8 8 . . 
-        . . . 8 8 . . . 
-        `,
-    img`
-        . 8 8 8 8 8 . . 
-        8 1 1 1 1 1 8 . 
-        8 8 8 8 1 1 8 . 
-        . 8 8 2 2 8 8 . 
-        . 8 2 2 8 8 . . 
-        8 3 3 3 3 3 8 . 
-        8 8 8 8 8 8 8 . 
-        . 8 8 8 8 8 . . 
-        `
-    ]
-    fontNumArray = [
-    img`
-        . . 8 8 8 8 . . 
-        . 8 1 1 1 1 8 . 
-        8 1 1 8 8 1 1 8 
-        8 2 2 8 8 2 2 8 
-        8 2 2 8 8 2 2 8 
-        8 8 3 3 3 3 8 8 
-        . 8 8 8 8 8 8 . 
-        . . 8 8 8 8 . . 
-        `,
-    img`
-        . 8 8 . 
-        8 1 1 8 
-        8 1 1 8 
-        8 2 2 8 
-        8 2 2 8 
-        8 3 3 8 
-        8 8 8 8 
-        . 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 8 8 8 8 1 1 8 
-        8 2 2 2 2 2 2 8 
-        8 2 2 8 8 8 8 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 8 8 8 1 1 8 
-        . 8 8 2 2 8 8 
-        . 8 8 8 2 2 8 
-        8 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 
-        . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 . 8 8 . 
-        8 1 1 8 1 1 8 
-        8 1 1 8 1 1 8 
-        8 2 2 2 2 2 8 
-        8 8 8 8 2 2 8 
-        . . . 8 3 3 8 
-        . . . 8 8 8 8 
-        . . . . 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 8 . 
-        8 1 1 1 1 1 1 8 
-        8 1 1 8 8 8 8 8 
-        8 2 2 2 2 2 2 8 
-        8 8 8 8 8 2 2 8 
-        8 3 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 8 
-        . 8 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 1 1 8 8 8 8 
-        8 2 2 2 2 2 8 
-        8 2 2 8 2 2 8 
-        8 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 
-        . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 8 8 8 1 1 8 
-        . 8 8 2 2 8 8 
-        . 8 2 2 8 8 . 
-        8 3 3 8 8 . . 
-        8 8 8 8 . . . 
-        . 8 8 . . . . 
-        `,
-    img`
-        . 8 8 8 8 8 . 
-        8 1 1 1 1 1 8 
-        8 1 1 8 1 1 8 
-        8 8 2 2 2 8 8 
-        8 2 2 8 2 2 8 
-        8 3 3 3 3 3 8 
-        8 8 8 8 8 8 8 
-        . 8 8 8 8 8 . 
-        `,
-    img`
-        . 8 8 8 8 . . 
-        8 1 1 1 1 8 . 
-        8 1 1 8 1 1 8 
-        8 2 2 2 2 2 8 
-        8 8 8 8 2 2 8 
-        . 8 8 8 3 3 8 
-        . . . 8 8 8 8 
-        . . . . 8 8 . 
-        `
-    ]
-}
 
 function initSmoothCamera () {
     smoothCamera = sprites.create(assets.image`CameraSprite`, SpriteKind.Camera)
@@ -2615,6 +2262,8 @@ sprites.onOverlap(SpriteKind.GroundEnemy, SpriteKind.Player, function (sprite, o
 
 sprites.onDestroyed(SpriteKind.projectileGroundEnemy, function (sprite) {
     initEffect(3, sprite.x, sprite.y)
+    killCount += 1
+    updateKillCount()
 
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
