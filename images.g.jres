@@ -209,6 +209,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "8bit_L"
     },
+    "image43": {
+        "data": "hwQJAAgAAACAiIgIGCEyiBghMoiAIYgIACiCAIAhiAgYITKIGCEyiICIiAg=",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_M"
+    },
     "image44": {
         "data": "hwQIAAgAAACAiIgIGCEyiIAhMoiAKIgIGCEyiBghMoiAiIgIAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
@@ -223,6 +228,11 @@
         "data": "hwQIAAgAAACAiIgIGCEyiBghMogYKIgIGCGIAIAhiAAAiAgAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "8bit_P"
+    },
+    "image47": {
+        "data": "hwQIAAkAAAAAiIgAAAAAAIAhgggAAAAAGCEyiAAAAAAYiDiDCAAAABghMogAAAAAgCGCCAAAAAAAiIgAAAAAAAAAAAAAAAAA",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "8bit_Q"
     },
     "image48": {
         "data": "hwQIAAgAAACAiIgIGCEyiBghMogYKIgIGCiICBghMogYgTKIgIiICA==",

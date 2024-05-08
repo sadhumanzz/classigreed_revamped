@@ -1460,6 +1460,17 @@ eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 8 8 8 8 8 8 8 . 
 . 8 8 8 8 8 . . 
 `;
+            case "image43":
+            case "8bit_M":return img`
+. 8 8 . . . 8 8 . 
+8 1 1 8 . 8 1 1 8 
+8 1 1 1 8 1 1 1 8 
+8 2 2 2 2 2 2 2 8 
+8 2 2 8 2 8 2 2 8 
+8 3 3 8 8 8 3 3 8 
+8 8 8 8 . 8 8 8 8 
+. 8 8 . . . 8 8 . 
+`;
             case "image44":
             case "8bit_N":return img`
 . 8 . . 8 8 . . 
@@ -1492,6 +1503,18 @@ eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
 8 3 3 8 8 8 . . 
 8 8 8 8 . . . . 
 . 8 8 . . . . . 
+`;
+            case "image47":
+            case "8bit_Q":return img`
+. . 8 8 8 . . . 
+. 8 1 1 1 8 . . 
+8 1 1 8 1 1 8 . 
+8 2 2 8 2 2 8 . 
+8 2 2 8 2 2 8 . 
+8 8 3 3 3 8 8 . 
+. 8 8 3 8 8 . . 
+. . 8 8 8 . . . 
+. . . 8 . . . . 
 `;
             case "image48":
             case "8bit_R":return img`
