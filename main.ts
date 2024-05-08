@@ -67,7 +67,6 @@ let currentLevel: number = 0
 let spawnableFloorTileArray: tiles.Location[] = []
 let enemyController: Sprite = null
 let waveCount: number = 0
-let killCount: number = 0
 let killCountSprite: Sprite = null
 let PPU: number = 16
 let Friction: number = 1.06 * PPU

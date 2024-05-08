@@ -27,8 +27,7 @@
         "tilemap.g.jres",
         "tilemap.g.ts",
         "images.g.jres",
-        "images.g.ts",
-        "8bitFontRender.ts"
+        "images.g.ts"
     ],
     "testFiles": [
         "test.ts"
