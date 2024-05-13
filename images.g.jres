@@ -210,7 +210,7 @@
         "displayName": "8bit_L"
     },
     "image43": {
-        "data": "hwQJAAgAAACAiIgIGCEyiBghMoiAIYgIACiCAIAhiAgYITKIGCEyiICIiAg=",
+        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAIYgIACiCAIAhiAgYITKIgIiICA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "8bit_M"
     },
@@ -230,7 +230,7 @@
         "displayName": "8bit_P"
     },
     "image47": {
-        "data": "hwQIAAkAAAAAiIgAAAAAAIAhgggAAAAAGCEyiAAAAAAYiDiDCAAAABghMogAAAAAgCGCCAAAAAAAiIgAAAAAAAAAAAAAAAAA",
+        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiDGCEyiIAhgggAiIgAAAAAAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "8bit_Q"
     },
@@ -368,16 +368,6 @@
         "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiIGIg4iBghMoiAIYIIAIiIAA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "8bit_0"
-    },
-    "image43": {
-        "data": "hwQIAAgAAACAiIgIGCEyiBghMoiAIYgIACiCAIAhiAgYITKIgIiICA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "8bit_M"
-    },
-    "image47": {
-        "data": "hwQIAAgAAAAAiIgAgCGCCBghMogYiDiDGCEyiIAhgggAiIgAAAAAAA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "8bit_Q"
     },
     "NC": {
         "namespace": "DTOtx0x5#qzJe}Tun",

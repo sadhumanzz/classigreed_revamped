@@ -67,7 +67,6 @@ let currentLevel: number = 0
 let spawnableFloorTileArray: tiles.Location[] = []
 let enemyController: Sprite = null
 let waveCount: number = 0
-let killCountSprite: Sprite = null
 let PPU: number = 16
 let Friction: number = 1.06 * PPU
 let playerAirFriction: number = 1 * PPU
@@ -91,16 +90,10 @@ let jumping: boolean = false
 let falling: boolean = false
 
 let mainMenu = miniMenu.createMenu(null)
-let killCounter = fancyText.create("", 0, 12, fancyText.rounded_small)
-let killCount: number = 0
 
 initLevel(-1)
 
 // https://img.freepik.com/premium-vector/game-font-pixel-art-8bit-style-letters-numbers-vector-alphabet-pixel-white-background_360488-381.jpg?w=2000
-
-killCounter = fancyText.create(killCount.toString(), 0, 3, fancyText.rounded_small)
-killCounter.setPosition(150, 24)
-killCounter.setFlag(SpriteFlag.RelativeToCamera, true)
 
 game.onUpdate(function () {
     if (!(controller.down.isPressed())) {
@@ -282,11 +275,15 @@ game.onUpdate(function () {
             playerController.vy = jumpVelocity
         }
     }
-})
 
-function updateKillCount() {
-    fancyText.setText(killCounter, killCount.toString())
-}
+    for (let value3 of sprites.allOfKind(SpriteKind.GroundEnemy)) {
+        if (value3.tileKindAt(TileDirection.Center, assets.tile`MovableTile`)) {
+            value3.destroy()
+        }
+    }
+
+
+})
 
 function initEnemy (Type: number) {
     waveCount += 1
@@ -498,8 +495,6 @@ sprites.onCreated(SpriteKind.Projectile, function (sprite) {
 
 sprites.onDestroyed(SpriteKind.GroundEnemy, function (sprite) {
     initEffect(3, sprite.x, sprite.y)
-    killCount += 1
-    updateKillCount()
 
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
@@ -550,7 +545,6 @@ sprites.onDestroyed(SpriteKind.GroundEnemy, function (sprite) {
         }
     }
 
-    killCount += 1
 })
 
 function initEffect (effectType: number, x: number, y: number) {
@@ -2229,8 +2223,6 @@ sprites.onOverlap(SpriteKind.GroundEnemy, SpriteKind.Player, function (sprite, o
 
 sprites.onDestroyed(SpriteKind.projectileGroundEnemy, function (sprite) {
     initEffect(3, sprite.x, sprite.y)
-    killCount += 1
-    updateKillCount()
 
     for (let index = 0; index < randint(1, 3); index++) {
         scrapMetal = sprites.create(img`
@@ -2278,7 +2270,6 @@ sprites.onDestroyed(SpriteKind.projectileGroundEnemy, function (sprite) {
         tileUtil.coverTile(sprite.tilemapLocation().getNeighboringLocation(CollisionDirection.Bottom), assets.tile`myTile23`)
     }
 
-    killCount += 1
 })
 
 controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -2714,7 +2705,6 @@ function initLevel (LevelNum: number) {
     } else if (LevelNum == 9) {
         currentLevel = 9
         mainMenu.close()
-
         mp.setPlayerSprite(mp.playerSelector(mp.PlayerNumber.One), playerController)
         initParallax(0)
         tiles.setCurrentTilemap(tilemap`level1`)
