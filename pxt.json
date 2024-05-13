@@ -30,7 +30,8 @@
         "images.g.jres",
         "images.g.ts",
         "movingBlocks.ts",
-        "interactableTiles.ts"
+        "interactableTiles.ts",
+        "tilesXtra.ts"
     ],
     "testFiles": [
         "test.ts"
