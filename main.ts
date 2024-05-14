@@ -17,6 +17,7 @@ namespace SpriteKind {
     export const enemyProjectile = SpriteKind.create()
     export const Camera = SpriteKind.create()
     export const Decor = SpriteKind.create()
+    export const BackgroundDecor = SpriteKind.create()
     export const ChargeBar = SpriteKind.create()
     export const hitBox = SpriteKind.create()
 }
@@ -2717,6 +2718,10 @@ function initLevel (LevelNum: number) {
         reloadGun()
         sprites.destroy(smoothCamera)
         scene.cameraFollowSprite(playerController)
+        for (let value of sprites.allOfKind(SpriteKind.Decor)) {
+            value.destroy()
+        }
+        initDecor()
         timer.after(1000, function () {
             sprites.destroyAllSpritesOfKind(SpriteKind.Text)
             initSpawnableArray()

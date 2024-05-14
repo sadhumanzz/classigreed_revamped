@@ -125,8 +125,6 @@ namespace myTiles {
     //% fixedInstance jres blockIdentity=images._tile
     export const tile60 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
-    export const tile46 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
     export const tile83 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile49 = image.ofBuffer(hex``);
@@ -210,18 +208,6 @@ namespace myTiles {
     export const tile114 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile115 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile120 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile121 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile122 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile123 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile124 = image.ofBuffer(hex``);
-    //% fixedInstance jres blockIdentity=images._tile
-    export const tile125 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile128 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
@@ -318,6 +304,20 @@ namespace myTiles {
     export const tile17 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile18 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile120 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile121 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile122 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile123 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile124 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile125 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile46 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -751,8 +751,6 @@ namespace myTiles {
             case "tile41":return tile41;
             case "myTile58":
             case "tile60":return tile60;
-            case "myTile42":
-            case "tile46":return tile46;
             case "myTile81":
             case "tile83":return tile83;
             case "myTile45":
@@ -837,18 +835,6 @@ namespace myTiles {
             case "tile114":return tile114;
             case "myTile111":
             case "tile115":return tile115;
-            case "myTile116":
-            case "tile120":return tile120;
-            case "myTile117":
-            case "tile121":return tile121;
-            case "myTile118":
-            case "tile122":return tile122;
-            case "myTile119":
-            case "tile123":return tile123;
-            case "myTile120":
-            case "tile124":return tile124;
-            case "myTile121":
-            case "tile125":return tile125;
             case "myTile124":
             case "tile128":return tile128;
             case "myTile138":
@@ -945,6 +931,20 @@ namespace myTiles {
             case "tile17":return tile17;
             case "MovableTile":
             case "tile18":return tile18;
+            case "decor_grassSmall":
+            case "tile120":return tile120;
+            case "decor_grassLarge":
+            case "tile121":return tile121;
+            case "decor_vineSmall":
+            case "tile122":return tile122;
+            case "decor_vineLeft":
+            case "tile123":return tile123;
+            case "decor_vineRight":
+            case "tile124":return tile124;
+            case "decor_vineLarge":
+            case "tile125":return tile125;
+            case "bgdecor_chainVertical":
+            case "tile46":return tile46;
         }
         return null;
     })

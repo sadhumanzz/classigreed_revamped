@@ -369,6 +369,41 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "8bit_0"
     },
+    "image75": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAKCaAAAAAAAAmaoAAAAAAACgmgAAAAAAAJCqAAAAAAAAAKkAAAAAAACpqgAAAAAAAACQAAAAAAAAAKkAAAAAAACpqgAAAAAAAJCqAAAAAAAAAJAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "decorSprite_grassSmall"
+    },
+    "image76": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAKCaAAAAAAAAAKAAAAAAAAAAkAAAAAAAAKmaAAAAAJoAkKoAAAAAoKqqqgAAAAAAkKqqAAAAAAAAAKkAAAAAAACgqgAAAAAAkJkAAAAAAJAJAKAAAAAAAAAAqgAAAAAAAAAAAAAAAAAAAKkAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "decorSprite_grassLarge"
+    },
+    "image77": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAACaAAAAAAAAAAkAAAAAAAAAqgkAAAAAAACaAAAAAAAAAAkAAAAAAAAACQAAAAAAAACqqpoAAAAAAKmpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "decorSprite_vineSmall"
+    },
+    "image78": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAkAAAAAAAAAqpmZCQAAAACpqgoAAAAAAACpqQAAAAAAAACQmgAJAAAAAACpqpoJAAAAAKCaAAAAAAAAoAkAAACZmQmQCgAAAJkAAACaAAAAAAAAAKoJAACqAAAAqaAAAJAKAACpkAoAAKkAAJoAmgAAoAkAqQCpAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "decorSprite_vineLeft"
+    },
+    "image79": {
+        "data": "hwQQABAAAAAAkAoAkAoACgAACgCQCgAKCQCaAKAJkAqZCakAkAqgCpkAoACgAKkJAACgCamQqgAAAJCamqkJAAAAAKqqmgAAAACQqqqZmQAAkJmqCQAJAJmZqZoJAAAACaCpqaqpCQAAqZqZmpoAAJmqCQAAAAAAqgkAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "decorSprite_vineRight"
+    },
+    "image80": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAACQAAAAAAAACZCQkAAAAAAAmZAAAAAAAACgAAAAAAAACaqZCakAAAAKqqqqqqmpoJqgmpqQmpCQAJAAAAAAAAAAAAAAAAAAAAqpoAAAAAAACaAAAAAAAAAAkAAAAAAAAAmgAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "decorSprite_vineLarge"
+    },
+    "image81": {
+        "data": "hwQQABAAAAAAAAAAAAAAAAAAAAAAAAAAZmYAAGBmZmZjYwMAZmNjYzMzAwA2MzMzY2ZmZmZmMzNmY2NjY2NERDYzMzMzMwQANjMzMzMzBABGQ0NDQ0NkZkNERERERDMzMzMEADYzMzNDQwQARkNDQ0REAABAREREAAAAAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "bgdecorSprite_chainVertical"
+    },
     "NC": {
         "namespace": "DTOtx0x5#qzJe}Tun",
         "id": "NC",
