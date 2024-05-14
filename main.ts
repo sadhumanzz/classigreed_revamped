@@ -1018,8 +1018,8 @@ spriteutils.onSpriteKindUpdateInterval(SpriteKind.projectileGroundEnemy, 500, fu
             sprites.setDataNumber(value8, "State", 2)
         } else {
             // States:
-            // 0: Stand
-            // 1: Patrol
+            // 0: Patrol
+            // 1: Stand
             // 2: Chase
             sprites.setDataNumber(value8, "State", randint(0, 1))
         }
