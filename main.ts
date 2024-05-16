@@ -2721,7 +2721,7 @@ function initLevel (LevelNum: number) {
         for (let value of sprites.allOfKind(SpriteKind.Decor)) {
             value.destroy()
         }
-        initDecor()
+//        initDecor()
         timer.after(1000, function () {
             sprites.destroyAllSpritesOfKind(SpriteKind.Text)
             initSpawnableArray()

@@ -13,4 +13,6 @@ function initDecor() {
 
 sprites.onCreated(SpriteKind.Decor, function(sprite: Sprite) {
         sprite.z = 10000
+        
+        sprite.setFlag(SpriteFlag.Ghost, true)
     })
